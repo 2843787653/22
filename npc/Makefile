@@ -28,8 +28,12 @@ clean:
 
 .PHONY: test verilog help compile bsp reformat checkformat clean
 
-sim:
+sim:./test/sim.cpp
+	g++ -c sim ./test/sim.cpp
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
+ 
+./sim.o:sim.cpp
+        gcc -c sim.cpp sim.o         
 	@echo "Write this Makefile by yourself."
 
 include ../Makefile
